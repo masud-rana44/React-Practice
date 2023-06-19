@@ -1,15 +1,20 @@
-import { useState } from "react";
+import Profile from "./components/Profile";
+import Clock from "./components/Clock";
+import TodoList from "./components/TodoList";
 import "./App.css";
 
 function App() {
-  const [time, setTime] = useState(0);
-
   return (
     <>
-      <h2>{time}</h2>
-      {setTimeout(() => {
-        setTime(time + 1);
-      }, 1000)}
+      <div
+        style={{
+          display: "flex",
+        }}
+      >
+        <Profile />
+        <TodoList />
+      </div>
+      <Clock locale="bn-BD" />
     </>
   );
 }
