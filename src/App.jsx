@@ -1,10 +1,13 @@
 import "./App.css";
-import Calculator from './components/Calculator';
+import Text from './composition/Text';
+import Emoji from "./composition/Emoji";
 
 function App() {
   return (
     <>
-      <Calculator />
+    <Emoji>
+      {(addEmoji) => <Text addEmoji={addEmoji}/>}
+    </Emoji>
     </>
   );
 }
