@@ -1,13 +1,12 @@
 import "./App.css";
-import Text from './composition/Text';
-import Emoji from "./composition/Emoji";
+import ClickCounter from "./components/ClickCounter";
+import HoverCounter from './components/HoverCounter';
 
 function App() {
   return (
     <>
-    <Emoji>
-      {(addEmoji) => <Text addEmoji={addEmoji}/>}
-    </Emoji>
+      <ClickCounter/>
+      <HoverCounter/>
     </>
   );
 }
