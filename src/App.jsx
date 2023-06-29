@@ -1,16 +1,19 @@
-import React from 'react';
-import "./App.css";
+import React, { useState } from 'react';
 import Counter from './components/Counter';
 
-class App extends React.Component {
+const App = () => {
+  const [show, setShow] = useState(true);
 
-  render () {
-    return (
-      <>
-        <Counter />
-      </>
-  );
+  const handleClick = () => {
+    setShow((show) => !show);
   }
+
+  return (
+    <>
+      { show && <Counter/>}
+      <button type='button' onClick={handleClick}>{show ? 'Hide' : 'Show'}</button>
+    </>
+  )
 }
 
-export default App;
+export default App

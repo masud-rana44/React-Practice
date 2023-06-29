@@ -1,25 +1,40 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const Counter = () => {
+export default function Counter () {
   const [count, setCount] = useState(0);
+  const [date, setDate] = useState(new Date());
 
-  const addFive = () => {
-    for(let i = 0; i < 5; i++)  {
-      setCount((prevCount) => {
-        return prevCount + 1;
-      });
+  // This function call on every render
+  useEffect(() => {
+    console.log('counter rendered');
+    document.title = `Clicked ${count} times`
+  }, [count]);
+
+  useEffect(() => {
+    console.log('Timer started');
+    const interval = setInterval(tick, 1000);
+
+
+    // Do this cleanup
+    return () => {
+      console.log('Timer stopped');
+      clearInterval(interval);
     }
+  }, [])
+
+  const tick = () => {
+    console.log('Tick executed')
+    setDate(new Date());
   }
 
   return (
-    <div>
-      {count}
       <div>
-        <button type='button' onClick={() => setCount(count + 1)}>add 1</button>
-        <button type='button' onClick={addFive}>add 5</button>
+        <p>Time: {date.toLocaleTimeString()}</p>
+        <p>
+          <button type='button' onClick={() => {
+            setCount((count) => count + 1)
+          }}>Click</button>
+        </p>
       </div>
-    </div>
-  )
+    )
 }
-
-export default Counter
