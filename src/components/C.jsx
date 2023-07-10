@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { counterContext } from "../App";
+import { counterContext } from "../AppAlt";
 
 function C() {
   const { count, countDispatch } = useContext(counterContext);
